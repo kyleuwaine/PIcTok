@@ -19,7 +19,7 @@ export default function RegisterScreen() {
                     onChangeText = {newPassword => setPassword(newPassword)}
                     editable = {true}>
                 </TextInput>
-                <TouchableOpacity style={styles.button} onPress={() => router.push("/(tabs)/(login)/LogInScreen")}>
+                <TouchableOpacity style={styles.button} onPress={() => router.push("/(tabs)/(login)/LoginScreen")}>
                     <Text style={styles.text}>Register</Text>
                 </TouchableOpacity>
             </View>);

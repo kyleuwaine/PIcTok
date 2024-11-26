@@ -33,6 +33,25 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
         }}
       />
+      <Tabs.Screen
+        name="messages"
+        options={{
+          title: 'Messages',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="(login)/LoginScreen"
+        options={{
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="(login)/RegisterScreen"
+        options={{
+          href: null,
+        }}
+      />
     </Tabs>
   );
 }

@@ -1,5 +1,4 @@
 import PhotoPreviewSection from '@/components/PhotoPreviewSection';
-import LogInScreen from '@/app/(tabs)/(login)/LogInScreen';
 import { AntDesign } from '@expo/vector-icons';
 import { CameraType, CameraView, useCameraPermissions } from 'expo-camera';
 import { useRef, useState } from 'react';
@@ -51,15 +50,17 @@ export default function Camera() {
   return (
     <View style={styles.container}>
       <CameraView style={styles.camera} facing={facing} ref={cameraRef}>
-        <View style={styles.buttonContainer}>
+        <View style={styles.buttonContainer2}>
+          <TouchableOpacity style={styles.button} onPress={() => router.push("/(tabs)/(login)/LoginScreen")}> 
+            <Text style={styles.text}>Login</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.buttonContainer1}>
           <TouchableOpacity style={styles.button} onPress={toggleCameraFacing}>
             <AntDesign name='retweet' size={44} color='black' />
           </TouchableOpacity>
           <TouchableOpacity style={styles.button} onPress={handleTakePhoto}>
             <AntDesign name='camera' size={44} color='black' />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={() => router.push("/(tabs)/(login)/LogInScreen")}> 
-            <Text style={styles.text}>Login</Text>
           </TouchableOpacity>
         </View>
       </CameraView>
@@ -75,8 +76,14 @@ const styles = StyleSheet.create({
   camera: {
     flex: 1,
   },
-  buttonContainer: {
+  buttonContainer1: {
     flex: 1,
+    flexDirection: 'row',
+    backgroundColor: 'transparent',
+    margin: 64,
+  },
+  buttonContainer2: {
+    //flex: 1,
     flexDirection: 'row',
     backgroundColor: 'transparent',
     margin: 64,

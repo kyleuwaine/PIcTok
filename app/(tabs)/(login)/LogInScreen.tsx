@@ -3,7 +3,7 @@ import { TouchableOpacity, SafeAreaView, Image, StyleSheet, View, Text, TextInpu
 import { Fontisto } from '@expo/vector-icons';
 import { router } from 'expo-router';
 
-export default function LogInScreen() {
+export default function LoginScreen() {
     const [username, setUsername] = React.useState('Username');
     const [password, setPassword] = React.useState('Password');
 
