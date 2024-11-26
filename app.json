@@ -9,7 +9,9 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
+      "bundleIdentifier": "com.PicTok.PicTok",
       "supportsTablet": true
+
     },
     "android": {
       "adaptiveIcon": {
