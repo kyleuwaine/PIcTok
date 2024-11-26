@@ -1,22 +1,14 @@
 import React from 'react'
 import { TouchableOpacity, SafeAreaView, Image, StyleSheet, View, Text, TextInput } from 'react-native';
 import { Fontisto } from '@expo/vector-icons';
-import RegisterScreen from './RegisterScreen';
+import { router } from 'expo-router'
 
-export default function LogInScreen(onClickRegister: any) {
-    const [username, setUsername] = React.useState('Username');
-    const [password, setPassword] = React.useState('Password');
-
-    const handleRegister = () => {
-      onClickRegister("register");
-    };
-
-    const handleLogin = () => {
-      onClickRegister("camera");
-    };
+export default function RegisterScreen() {
+    const [username, setUsername] = React.useState('Set Username');
+    const [password, setPassword] = React.useState('Set Password');
 
     return (<View style={styles.container}>
-                <Text style={styles.header}>Login to your account</Text>
+                <Text style={styles.header}>Register a new account</Text>
                 <TextInput style={styles.textInput} 
                     value = {username}
                     onChangeText = {newUsername => setUsername(newUsername)}
@@ -27,12 +19,8 @@ export default function LogInScreen(onClickRegister: any) {
                     onChangeText = {newPassword => setPassword(newPassword)}
                     editable = {true}>
                 </TextInput>
-                <TouchableOpacity style={styles.button} onPress={handleLogin}>
-                    <Text style={styles.text}>Login</Text>
-                </TouchableOpacity>
-                <Text style={styles.header}>Or Register</Text>
-                <TouchableOpacity style={styles.button} onPress={handleRegister}>
-                    <Text style={styles.text}>Register Here!</Text>
+                <TouchableOpacity style={styles.button} onPress={() => router.push("/(tabs)/(login)/LogInScreen")}>
+                    <Text style={styles.text}>Register</Text>
                 </TouchableOpacity>
             </View>);
 }
