@@ -1,0 +1,6 @@
+module Pods_PicTok {
+  umbrella header "Pods-PicTok-umbrella.h"
+
+  export *
+  module * { export * }
+}
