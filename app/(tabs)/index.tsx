@@ -15,6 +15,8 @@ export default function Camera() {
     return <View />;
   }
 
+  
+
   if (!permission.granted) {
     // Camera permissions are not granted yet.
     return (
