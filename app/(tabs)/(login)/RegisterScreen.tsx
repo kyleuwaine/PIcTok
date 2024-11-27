@@ -1,7 +1,7 @@
 import React from 'react'
 import { TouchableOpacity, SafeAreaView, Image, StyleSheet, View, Text, TextInput } from 'react-native';
 import { Fontisto } from '@expo/vector-icons';
-import { router } from 'expo-router'
+import { Link } from 'expo-router'
 
 export default function RegisterScreen() {
     const [username, setUsername] = React.useState('Set Username');
@@ -19,9 +19,11 @@ export default function RegisterScreen() {
                     onChangeText = {newPassword => setPassword(newPassword)}
                     editable = {true}>
                 </TextInput>
-                <TouchableOpacity style={styles.button} onPress={() => router.push("/(tabs)/(login)/LoginScreen")}>
-                    <Text style={styles.text}>Register</Text>
-                </TouchableOpacity>
+                <Link href="/(tabs)/(login)/LoginScreen" style={styles.button} asChild>
+                  <TouchableOpacity style={styles.button}>
+                      <Text style={styles.text}>Register</Text>
+                  </TouchableOpacity>
+                </Link>
             </View>);
 }
 

@@ -3,13 +3,20 @@ import { AntDesign } from '@expo/vector-icons';
 import { CameraType, CameraView, useCameraPermissions } from 'expo-camera';
 import { useRef, useState } from 'react';
 import { Button, StyleSheet, Text, Touchable, TouchableOpacity, View } from 'react-native';
-import { router } from 'expo-router';
+import { Link } from 'expo-router';
+import { useLogin } from '@/components/LoginContext';
+import LoginScreen from './(login)/LoginScreen';
 
 export default function Camera() {
   const [facing, setFacing] = useState<CameraType>('back');
   const [permission, requestPermission] = useCameraPermissions();
   const [photo, setPhoto] = useState<any>(null);
   const cameraRef = useRef<CameraView | null>(null);
+  const { loginStatus, changeLogin } = useLogin();
+
+  if (!loginStatus) {
+    return <LoginScreen></LoginScreen>
+  }
 
   if (!permission) {
     // Camera permissions are still loading.
@@ -50,11 +57,6 @@ export default function Camera() {
   return (
     <View style={styles.container}>
       <CameraView style={styles.camera} facing={facing} ref={cameraRef}>
-        <View style={styles.buttonContainer2}>
-          <TouchableOpacity style={styles.button} onPress={() => router.push("/(tabs)/(login)/LoginScreen")}> 
-            <Text style={styles.text}>Login</Text>
-          </TouchableOpacity>
-        </View>
         <View style={styles.buttonContainer1}>
           <TouchableOpacity style={styles.button} onPress={toggleCameraFacing}>
             <AntDesign name='retweet' size={44} color='black' />

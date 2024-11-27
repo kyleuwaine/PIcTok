@@ -1,11 +1,17 @@
 import React from 'react'
 import { TouchableOpacity, SafeAreaView, Image, StyleSheet, View, Text, TextInput } from 'react-native';
 import { Fontisto } from '@expo/vector-icons';
-import { router } from 'expo-router';
+import { Link } from 'expo-router';
+import { useLogin } from '@/components/LoginContext';
 
 export default function LoginScreen() {
     const [username, setUsername] = React.useState('Username');
     const [password, setPassword] = React.useState('Password');
+    const { loginStatus, changeLogin } = useLogin()
+
+    function handleLogin() {
+      changeLogin({ type: 'login' })
+    }
 
     return (<View style={styles.container}>
                 <Text style={styles.header}>Login to your account</Text>
@@ -19,13 +25,17 @@ export default function LoginScreen() {
                     onChangeText = {newPassword => setPassword(newPassword)}
                     editable = {true}>
                 </TextInput>
-                <TouchableOpacity style={styles.button} onPress={() => router.push("/(tabs)")}>
-                    <Text style={styles.text}>Login</Text>
-                </TouchableOpacity>
+                <Link href="/(tabs)" style={styles.button} asChild>
+                  <TouchableOpacity style={styles.button} onPress={handleLogin}>
+                      <Text style={styles.text}>Login</Text>
+                  </TouchableOpacity>
+                </Link>
                 <Text style={styles.header}>Or Register</Text>
-                <TouchableOpacity style={styles.button} onPress={() => router.push("/(tabs)/(login)/RegisterScreen")}>
-                    <Text style={styles.text}>Register Here!</Text>
-                </TouchableOpacity>
+                <Link href="/(tabs)/(login)/RegisterScreen" style={styles.button} asChild>
+                  <TouchableOpacity style={styles.button}>
+                      <Text style={styles.text}>Register Here!</Text>
+                  </TouchableOpacity>
+                </Link>
             </View>);
 }
 
