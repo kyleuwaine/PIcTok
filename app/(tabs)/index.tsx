@@ -2,18 +2,28 @@ import PhotoPreviewSection from '@/components/PhotoPreviewSection';
 import { AntDesign } from '@expo/vector-icons';
 import { CameraType, CameraView, useCameraPermissions } from 'expo-camera';
 import { useRef, useState } from 'react';
-import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Button, StyleSheet, Text, Touchable, TouchableOpacity, View } from 'react-native';
+import { Link } from 'expo-router';
+import { useLogin } from '@/components/LoginContext';
+import LoginScreen from './(login)/LoginScreen';
 
 export default function Camera() {
   const [facing, setFacing] = useState<CameraType>('back');
   const [permission, requestPermission] = useCameraPermissions();
   const [photo, setPhoto] = useState<any>(null);
   const cameraRef = useRef<CameraView | null>(null);
+  const { loginStatus, changeLogin } = useLogin();
+
+  if (!loginStatus) {
+    return <LoginScreen></LoginScreen>
+  }
 
   if (!permission) {
     // Camera permissions are still loading.
     return <View />;
   }
+
+  
 
   if (!permission.granted) {
     // Camera permissions are not granted yet.
@@ -49,7 +59,7 @@ export default function Camera() {
   return (
     <View style={styles.container}>
       <CameraView style={styles.camera} facing={facing} ref={cameraRef}>
-        <View style={styles.buttonContainer}>
+        <View style={styles.buttonContainer1}>
           <TouchableOpacity style={styles.button} onPress={toggleCameraFacing}>
             <AntDesign name='retweet' size={44} color='black' />
           </TouchableOpacity>
@@ -70,8 +80,14 @@ const styles = StyleSheet.create({
   camera: {
     flex: 1,
   },
-  buttonContainer: {
+  buttonContainer1: {
     flex: 1,
+    flexDirection: 'row',
+    backgroundColor: 'transparent',
+    margin: 64,
+  },
+  buttonContainer2: {
+    //flex: 1,
     flexDirection: 'row',
     backgroundColor: 'transparent',
     margin: 64,
