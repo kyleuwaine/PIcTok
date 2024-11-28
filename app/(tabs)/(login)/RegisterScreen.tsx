@@ -19,7 +19,7 @@ export default function RegisterScreen() {
                     onChangeText = {newPassword => setPassword(newPassword)}
                     editable = {true}>
                 </TextInput>
-                <Link href="/(tabs)/(login)/LoginScreen" style={styles.button} asChild>
+                <Link href="/(tabs)/(login)/loginScreen" style={styles.button} asChild>
                   <TouchableOpacity style={styles.button}>
                       <Text style={styles.text}>Register</Text>
                   </TouchableOpacity>

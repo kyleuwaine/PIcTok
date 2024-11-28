@@ -5,7 +5,7 @@ import { useRef, useState } from 'react';
 import { Button, StyleSheet, Text, Touchable, TouchableOpacity, View } from 'react-native';
 import { Link } from 'expo-router';
 import { useLogin } from '@/components/LoginContext';
-import LoginScreen from './(login)/LoginScreen';
+import LoginScreen from './(login)/loginScreen';
 
 export default function Camera() {
   const [facing, setFacing] = useState<CameraType>('back');

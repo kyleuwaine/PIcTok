@@ -31,7 +31,7 @@ export default function LoginScreen() {
                   </TouchableOpacity>
                 </Link>
                 <Text style={styles.header}>Or Register</Text>
-                <Link href="/(tabs)/(login)/RegisterScreen" style={styles.button} asChild>
+                <Link href="/(tabs)/(login)/registerScreen" style={styles.button} asChild>
                   <TouchableOpacity style={styles.button}>
                       <Text style={styles.text}>Register Here!</Text>
                   </TouchableOpacity>
