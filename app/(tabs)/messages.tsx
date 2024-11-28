@@ -1,4 +1,5 @@
-import {Text, View, StyleSheet, FlatList, Button, Alert } from "react-native";
+import {Text, View, StyleSheet, FlatList, Button, Alert, TouchableOpacity } from "react-native";
+import { Link } from 'expo-router';
 
 export default function Messages() {
   const messages = [
@@ -15,7 +16,14 @@ export default function Messages() {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container1}>
+      <View style={styles.container2}>
+        <Link href="/(tabs)/friends" asChild>
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.text}>Friends</Text>
+          </TouchableOpacity>
+        </Link>
+      </View>
       <FlatList
         data={messages}
         keyExtractor={(item) => item.id}
@@ -36,13 +44,19 @@ export default function Messages() {
 
 
 const styles = StyleSheet.create({
-  container: {
+  container1: {
     flex: 1,
     padding: 10,
     backgroundColor: "#f5f5f5",
   },
+  container2: {
+    alignItems: 'center',
+    backgroundColor: '#f5f5f5',
+    margin: 0,
+    paddingTop: 40
+  },
   listContainer: {
-    paddingTop: 40, // Adds space at the top of the list
+    paddingTop: 0, // Adds space at the top of the list
   },
   row: {
     flexDirection: "row",
@@ -62,5 +76,20 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#333",
     flex: 1,
+  },
+  button: {
+    marginLeft: 300,
+    alignItems: 'center',
+    marginHorizontal: 10,
+    backgroundColor: 'gray',
+    borderRadius: 10,
+    margin: 10,
+  },
+  text: {
+    textAlign: 'center',
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: 'white',
+    margin: 10
   },
 });
