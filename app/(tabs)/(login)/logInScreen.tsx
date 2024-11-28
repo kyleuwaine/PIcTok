@@ -1,14 +1,20 @@
 import React from 'react'
 import { TouchableOpacity, SafeAreaView, Image, StyleSheet, View, Text, TextInput } from 'react-native';
 import { Fontisto } from '@expo/vector-icons';
-import { Link } from 'expo-router'
+import { Link } from 'expo-router';
+import { useLogin } from '@/components/LoginContext';
 
-export default function RegisterScreen() {
-    const [username, setUsername] = React.useState('Set Username');
-    const [password, setPassword] = React.useState('Set Password');
+export default function LoginScreen() {
+    const [username, setUsername] = React.useState('Username');
+    const [password, setPassword] = React.useState('Password');
+    const { loginStatus, changeLogin } = useLogin()
+
+    function handleLogin() {
+      changeLogin({ type: 'login' })
+    }
 
     return (<View style={styles.container}>
-                <Text style={styles.header}>Register a new account</Text>
+                <Text style={styles.header}>Login to your account</Text>
                 <TextInput style={styles.textInput} 
                     value = {username}
                     onChangeText = {newUsername => setUsername(newUsername)}
@@ -19,9 +25,15 @@ export default function RegisterScreen() {
                     onChangeText = {newPassword => setPassword(newPassword)}
                     editable = {true}>
                 </TextInput>
-                <Link href="/(tabs)/(login)/LoginScreen" style={styles.button} asChild>
+                <Link href="/(tabs)" style={styles.button} asChild>
+                  <TouchableOpacity style={styles.button} onPress={handleLogin}>
+                      <Text style={styles.text}>Login</Text>
+                  </TouchableOpacity>
+                </Link>
+                <Text style={styles.header}>Or Register</Text>
+                <Link href="/(tabs)/(login)/registerScreen" style={styles.button} asChild>
                   <TouchableOpacity style={styles.button}>
-                      <Text style={styles.text}>Register</Text>
+                      <Text style={styles.text}>Register Here!</Text>
                   </TouchableOpacity>
                 </Link>
             </View>);
@@ -62,5 +74,6 @@ const styles = StyleSheet.create({
       backgroundColor: 'white',
       width: 200,
       margin: 20,
+      borderRadius: 10
     }
   });

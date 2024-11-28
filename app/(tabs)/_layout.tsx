@@ -41,13 +41,13 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="(login)/LoginScreen"
+        name="(login)/loginScreen"
         options={{
           href: null,
         }}
       />
       <Tabs.Screen
-        name="(login)/RegisterScreen"
+        name="(login)/registerScreen"
         options={{
           href: null,
         }}
