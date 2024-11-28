@@ -59,6 +59,13 @@ export default function Camera() {
   return (
     <View style={styles.container}>
       <CameraView style={styles.camera} facing={facing} ref={cameraRef}>
+        <View style={styles.buttonContainer2}>
+          <Link href="/(tabs)/friends" asChild>
+            <TouchableOpacity style={styles.button}>
+              <Text style={styles.text}>Friends</Text>
+            </TouchableOpacity>
+          </Link>
+        </View>
         <View style={styles.buttonContainer1}>
           <TouchableOpacity style={styles.button} onPress={toggleCameraFacing}>
             <AntDesign name='retweet' size={44} color='black' />

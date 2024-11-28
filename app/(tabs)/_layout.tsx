@@ -52,6 +52,12 @@ export default function TabLayout() {
           href: null,
         }}
       />
+      <Tabs.Screen
+        name="friends"
+        options={{
+          href: null,
+        }}
+      />
     </Tabs>
   );
 }
