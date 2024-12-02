@@ -16,12 +16,12 @@ export default function LoginScreen() {
     return (<View style={styles.container}>
                 <Text style={styles.header}>Login to your account</Text>
                 <TextInput style={styles.textInput} 
-                    value = {username}
+                    placeholder= 'Username'
                     onChangeText = {newUsername => setUsername(newUsername)}
                     editable = {true}>
                 </TextInput>
                 <TextInput style={styles.textInput} 
-                    value = {password}
+                    placeholder = 'Password'
                     onChangeText = {newPassword => setPassword(newPassword)}
                     editable = {true}>
                 </TextInput>

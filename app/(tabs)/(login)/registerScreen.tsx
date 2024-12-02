@@ -10,12 +10,12 @@ export default function RegisterScreen() {
     return (<View style={styles.container}>
                 <Text style={styles.header}>Register a new account</Text>
                 <TextInput style={styles.textInput} 
-                    value = {username}
+                    placeholder = 'Username'
                     onChangeText = {newUsername => setUsername(newUsername)}
                     editable = {true}>
                 </TextInput>
                 <TextInput style={styles.textInput} 
-                    value = {password}
+                    placeholder = 'Password'
                     onChangeText = {newPassword => setPassword(newPassword)}
                     editable = {true}>
                 </TextInput>
