@@ -1,13 +1,32 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { TouchableOpacity, SafeAreaView, Image, StyleSheet, View, Text, TextInput } from 'react-native';
 import { Fontisto } from '@expo/vector-icons';
 import { Link } from 'expo-router';
 import { useLogin } from '@/components/LoginContext';
+import firestore, {FirebaseFirestoreTypes} from '@react-native-firebase/firestore';
+
 
 export default function LoginScreen() {
-    const [username, setUsername] = React.useState('Username');
-    const [password, setPassword] = React.useState('Password');
+    
+    const [username, setUsername] = useState('Username');
+    const [password, setPassword] = useState('Password');
     const { loginStatus, changeLogin } = useLogin()
+
+    const [userData, setUserData] = useState<FirebaseFirestoreTypes.DocumentData | null>(null);
+
+
+    const getUser = async () => {
+      const userDocument = await firestore().collection("users").doc('y5O1n6H5zkZHw0LtWNgu').get();
+      console.log(userDocument);
+      if (userDocument.exists) {
+        setUserData(userDocument);
+      }
+    };
+
+    useEffect(() => {
+      getUser();
+    }, []);
+  
 
     function handleLogin() {
       changeLogin({ type: 'login' })
@@ -16,7 +35,7 @@ export default function LoginScreen() {
     return (<View style={styles.container}>
                 <Text style={styles.header}>Login to your account</Text>
                 <TextInput style={styles.textInput} 
-                    placeholder= 'Username'
+                    placeholder= {JSON.stringify(userData, null, 2)}//'Username'
                     onChangeText = {newUsername => setUsername(newUsername)}
                     editable = {true}>
                 </TextInput>

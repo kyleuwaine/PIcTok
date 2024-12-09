@@ -6,6 +6,7 @@ import { Button, StyleSheet, Text, Touchable, TouchableOpacity, View } from 'rea
 import { Link } from 'expo-router';
 import { useLogin } from '@/components/LoginContext';
 import LoginScreen from './(login)/loginScreen';
+import firestore from '@react-native-firebase/firestore';
 
 export default function Camera() {
   const [facing, setFacing] = useState<CameraType>('back');
@@ -13,6 +14,9 @@ export default function Camera() {
   const [photo, setPhoto] = useState<any>(null);
   const cameraRef = useRef<CameraView | null>(null);
   const { loginStatus, changeLogin } = useLogin();
+
+
+
 
   if (!loginStatus) {
     return <LoginScreen></LoginScreen>
